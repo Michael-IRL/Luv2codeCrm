@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -33,6 +34,17 @@ public class ContractDAOImpl implements ContractDAO
 		Contract contract = session.get(Contract.class, id);
 		
 		return contract;
+	}
+
+	@Override
+	public Contract getContractWithCustomers(int id)
+	{
+		Session session = sessionFactory.getCurrentSession();
+		
+		Query<Contract> query = session.createQuery("select c from Contract c join fetch c.customers where c.id = :id",Contract.class);
+		query.setParameter("id", id);
+		
+		return query.getSingleResult();
 	}
 
 }

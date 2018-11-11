@@ -66,7 +66,7 @@ public class CustomerController {
 		System.out.println(">>> the pasted in customer "+theCustomer);
 		System.out.println(">>> the pasted in contractId "+id);
 		
-		Contract contract = contractService.getContract(id);
+		Contract contract = contractService.getContractWithCustomers(id);
 		
 		System.out.println(">>> fetched contract "+ contract);
 		System.out.println(">>> Add the contract to the customer");
@@ -76,11 +76,9 @@ public class CustomerController {
 		System.out.println(">>> the customer with contract added "+theCustomer);
 		System.out.println(">>> Add the customer to the contract");
 		
-		contract.addCustomer(theCustomer);
+		contract.addCustomer(theCustomer);	
 		
-		
-		
-		//customerService.saveCustomer(theCustomer);	
+		customerService.saveCustomer(theCustomer);	
 		
 		return "redirect:/customer/list";
 	}

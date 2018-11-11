@@ -30,4 +30,11 @@ public class ContractServiceImpl implements ContractService
 		return contractDao.getContract(id);
 	}
 
+	@Override
+	@Transactional
+	public Contract getContractWithCustomers(int id)
+	{		
+		return contractDao.getContractWithCustomers(id);
+	}
+
 }

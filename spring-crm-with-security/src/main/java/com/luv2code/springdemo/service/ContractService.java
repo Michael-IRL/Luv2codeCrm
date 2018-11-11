@@ -9,4 +9,6 @@ public interface ContractService
 	public List<Contract> getContracts();
 
 	public Contract getContract(int id);
+
+	public Contract getContractWithCustomers(int id);
 }
